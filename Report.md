@@ -25,7 +25,9 @@ This project requires some modules as previously stated. First of all [pip](http
 ```console
 $ make install
 $ make exe
+
 	# or
+
 $ make all
 ```
 
@@ -35,10 +37,11 @@ $ make all
 $ python3 -m pip install opencv-python
 $ python3 -m pip install matplotlib
 $ python3 -m pip install numpy
+
 $ python3 -B ./DCTpy/src/main.py
 ```
 
-Once the program is running, it will ask to insert the filepath of the image, the block size and the parameter of quantization. It will show the split between the Y, Cb, Cr channels, the relative DCT, the quantization and the relative IDCT to build up the "compressed" image again. Then the program will make the same process on the same image with different values of percentage of quantization. At the end a chart of the _MSE_ and _PSNR_ will be display.
+Once the program is running, it will ask to insert the filepath of the image, the block size and the parameters of quantization. It is common use to adopt higher values of percentage of quantization for crominance as the human eyes are more suited for luminance. It will show the split between the Y, Cb, Cr channels, the relative DCT, the quantization and the relative IDCT to build up the "compressed" image again. Then the program will make the same process on the same image with different values of percentage of quantization. At the end a chart of the _MSE_ and _PSNR_ will be display.
 
 ## Example DCTpy
 
@@ -46,14 +49,21 @@ Considering:
 
 - image = ./img/man.jpeg
 - block size = 32
-- parameter of quantization = 95
+- parameter of quantization for luminance = 80
+- parameter of quantization for crominance: 95
 
 ```console
 $ make exe
+
 $ Image filepath: ./img/man.jpeg
 $ Block size: 32
-$ Parameter of quantization: 95
+$ Parameter of quantization for luminance: 80
+$ Parameter of quantization for crominance: 95
+
 	# images of the components will be shown as demonstration (skip them by pressing any key)
+
+$ MSE: 0.7298258867413668
+$ PSNR: 49.49861097249607
 $ Compression parameter R= 10 ...
 $ Compression parameter R= 20 ...
 $ Compression parameter R= 30 ...
@@ -67,10 +77,11 @@ $ Compression parameter R= 94 ...
 $ Compression parameter R= 96 ...
 $ Compression parameter R= 98 ...
 $ Compression parameter R= 99 ...
+
 	# plot of MSE and PSNR
 ```
 
-For the image "./img/man.jpeg" with blocks 8x8, 16x16 and 32x32 these are the result of the progression of _MSE_ and _PSNR_:
+For the image "./img/man.jpeg" with blocks 8x8, 16x16 and 32x32 these are the result of the progression of _MSE_ and _PSNR_ (consider that **R%** value is the same for luminance and crominance):
 ![](./8x8.jpeg)
 ![](./16x16.jpeg)
 ![](./32x32.jpeg)

@@ -7,11 +7,15 @@ image = img_resize(image, block_size)
 if filepath != "./img/ycrcb.ycrcb":
     image = color2YCrCb(image)
 
-R = float(input("Parameter of quantization: "))
-while R <= 0 or R >= 100:
-    R = float(input("This value must be in range (0, 100): "))
+L = float(input("Parameter of quantization for luminance: "))
+while L <= 0 or L >= 100:
+    L = float(input("This value must be in range (0, 100): "))
 
-mse_1, psnr_1 = img_comp(image, block_size, R, info=True)
+C = float(input("Parameter of quantization for crominance: "))
+while C <= 0 or C >= 100:
+    C = float(input("This value must be in range (0, 100): "))
+
+mse_1, psnr_1 = img_comp(image, block_size, [L, C], info=True)
 print("MSE: %s" % mse_1)
 print("PSNR: %s" % psnr_1)
 
@@ -21,7 +25,7 @@ psnr = []
 
 for i in jumps:
     print("Compression parameter R= %s ..." % i)
-    m, p = img_comp(image, block_size, i)
+    m, p = img_comp(image, block_size, [i, i])
     mse.append(m)
     psnr.append(p)
 

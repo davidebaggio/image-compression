@@ -5,7 +5,7 @@ from quantization import *
 from math import *
 
 
-def img_comp(image, block_size: int, R: float, info=False):
+def img_comp(image, block_size: int, param: list, info=False):
 
     # extract Y, Cb, Cr channels
     y, Cr, Cb = cv2.split(image)
@@ -16,9 +16,9 @@ def img_comp(image, block_size: int, R: float, info=False):
     cb_dct = blocks_DCT(Cb, block_size)
 
     # quantization of matrix
-    y_qdct = quantization_of_matrix(y_dct, R)
-    cr_qdct = quantization_of_matrix(cr_dct, R)
-    cb_qdct = quantization_of_matrix(cb_dct, R)
+    y_qdct = quantization_of_matrix(y_dct, param[0])
+    cr_qdct = quantization_of_matrix(cr_dct, param[1])
+    cb_qdct = quantization_of_matrix(cb_dct, param[1])
 
     # perform idct over color channels with block size
     backY = blocks_IDCT(y_qdct, block_size)
