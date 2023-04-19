@@ -66,7 +66,7 @@ $ make all
 
 $ cd ..
 $ make exe
-$ Image filepath: ../img/ycrcb.ycrcb
+$ Image filepath: ./img/ycrcb.ycrcb
 $ ...
 $ ...
 ```

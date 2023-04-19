@@ -14,7 +14,7 @@ This section is written in python because this language provides useful modules 
 ## Instruction
 
 Having [GNU Make](https://www.gnu.org/software/make/) for building projects will simplify the execution of the program.
-The "img" folder contains some image to test.
+The "img" folder contains some image to test. This program doesn't support raw _.ycbcr_ format but it supports _.ycrcb_ format built from CCc optional section. Supported file extension: `[".jpeg", ".jpg", ".png", ".pmg", ".bmp", ".ycrcb"]`.
 
 ### DCTpy
 

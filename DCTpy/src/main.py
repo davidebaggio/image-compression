@@ -1,10 +1,17 @@
 from image_compression import *
+import os
+
+corext = [".jpeg", ".jpg", ".png", ".pmg", ".bmp", ".ycrcb"]
 
 filepath = str(input("Image filepath: "))
+filename, filext = os.path.splitext(filepath)
+if filext not in corext:
+    print("Incorrect file extension")
+    exit(0)
 image = get_image(filepath)
 block_size = int(input("Block size: "))
 image = img_resize(image, block_size)
-if filepath != "./img/ycrcb.ycrcb":
+if filext != ".ycrcb":
     image = color2YCrCb(image)
 
 L = float(input("Parameter of quantization for luminance: "))
