@@ -1,0 +1,4 @@
+.vscode
+CCc/.vscode
+CCc/build/*.o
+CCc/image_colors
