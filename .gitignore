@@ -3,3 +3,4 @@ CCc/.vscode
 CCc/build/*.o
 CCc/image_colors
 *.jpeg
+image_compression.zip
